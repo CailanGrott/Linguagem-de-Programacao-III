@@ -1,15 +1,16 @@
 package model;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public abstract class Produto {
     private String nome;
-    private int valor;
+    private BigDecimal valor;
     private LocalDate dataFabricacao;
     private LocalDate dataVencimento;
     private String origem;
 
-    public Produto(String nome, int valor, LocalDate dataFabricacao,
+    public Produto(String nome, BigDecimal valor, LocalDate dataFabricacao,
                    LocalDate dataVencimento, String origem) {
         this.nome = nome;
         this.valor = valor;
@@ -23,7 +24,7 @@ public abstract class Produto {
     }
 
 
-    public int getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 }

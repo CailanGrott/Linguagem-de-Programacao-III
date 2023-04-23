@@ -3,6 +3,7 @@ package model;
 import enums.FormaPagamento;
 import enums.StatusPedido;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -31,24 +32,24 @@ public class Pedido {
         this.id = id;
     }
 
-    public double calcularValorTotal() {
-        double valorTotalPedido = 0;
-        double descontoPix = 0.05;
-        double descontoDinheiro = 0.1;
-        double acrescimoCartao = 0.03;
+    public BigDecimal calcularValorTotal() {
+        BigDecimal valorTotalPedido = BigDecimal.valueOf(0);
+        BigDecimal descontoPix = BigDecimal.valueOf(0.05);
+        BigDecimal descontoDinheiro = BigDecimal.valueOf(0.1);
+        BigDecimal acrescimoCartao = BigDecimal.valueOf(0.03);
 
         for (Produto produto : produtos) {
             System.out.println(produto.getNome());
-            valorTotalPedido += produto.getValor();
+            valorTotalPedido = valorTotalPedido.add(produto.getValor());
         }
         if (formaPagamento == formaPagamento.PIX) {
-            valorTotalPedido -= (valorTotalPedido * descontoPix);
+            valorTotalPedido = valorTotalPedido.subtract(valorTotalPedido.multiply(descontoPix));
         }
         if (formaPagamento == formaPagamento.DINHEIRO) {
-            valorTotalPedido -= (valorTotalPedido * descontoDinheiro);
+            valorTotalPedido = valorTotalPedido.subtract(valorTotalPedido.multiply(descontoDinheiro));
         }
         if (formaPagamento == formaPagamento.CARTAO) {
-            valorTotalPedido += (valorTotalPedido * acrescimoCartao);
+            valorTotalPedido = valorTotalPedido.add(valorTotalPedido.multiply(acrescimoCartao));
         }
 
         return valorTotalPedido;

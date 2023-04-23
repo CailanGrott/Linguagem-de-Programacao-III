@@ -6,6 +6,8 @@ import service.PedidoService;
 import java.time.LocalDate;
 import java.util.Arrays;
 
+import static java.math.BigDecimal.*;
+
 public class Application {
 
     public static void main(String[] args) {
@@ -21,13 +23,13 @@ public class Application {
         Usuario usuario3 = new Usuario("Cailan", LocalDate.of(2002, 8, 28),
                 enderecoCailan, "2222222", "eusougrott", "123456");
 
-        Produto produto1 = new Cerveja("Cerveja Polar", 61,
+        Produto produto1 = new Cerveja("Cerveja Polar", valueOf(10),
                 LocalDate.of(2020, 1, 1), LocalDate.of(2023, 1, 1),
                 "Brasil", TipoCerveja.PILSEN, 5, 600);
-        Produto produto2 = new Cerveja("Cerveja Heineken", 32,
+        Produto produto2 = new Cerveja("Cerveja Heineken", valueOf(10),
                 LocalDate.of(2020, 1, 1), LocalDate.of(2023, 1, 1),
                 "Brasil", TipoCerveja.PILSEN, 6, 600);
-        Produto produto3 = new Cerveja("Cerveja Brahma", 45,
+        Produto produto3 = new Cerveja("Cerveja Brahma", valueOf(10),
                 LocalDate.of(2020, 1, 1), LocalDate.of(2023, 1, 1),
                 "Brasil", TipoCerveja.WEISS, 6, 600);
 

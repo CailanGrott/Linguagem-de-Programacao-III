@@ -11,7 +11,7 @@ public class Cerveja extends Produto {
     private double teorAlcoolico;
     private int volume;
 
-    public Cerveja(String nome, int valor, LocalDate dataFabricacao,
+    public Cerveja(String nome, BigDecimal valor, LocalDate dataFabricacao,
                    LocalDate dataVencimento, String origem, TipoCerveja tipo,
                    double teorAlcoolico, int volume) {
         super(nome, valor, dataFabricacao, dataVencimento, origem);
