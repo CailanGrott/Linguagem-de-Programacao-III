@@ -1,13 +1,13 @@
 package com.cailangrott.cinemax.strategy;
 
+import com.cailangrott.cinemax.entity.Ticket;
 import com.cailangrott.cinemax.entity.User;
-import com.cailangrott.cinemax.entity.enums.TicketType;
 
 import java.math.BigDecimal;
 
 public class CamaroteStrategy implements TicketSaleStrategy{
     @Override
-    public BigDecimal sell(TicketType ticketType, User user) {
-        return ticketType.getValor();
+    public BigDecimal sell(Ticket ticket, User user) {
+        return ticket.getTicketType().getValue();
     }
 }

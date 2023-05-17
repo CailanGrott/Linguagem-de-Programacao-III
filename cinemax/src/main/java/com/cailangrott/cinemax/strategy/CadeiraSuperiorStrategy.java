@@ -1,5 +1,6 @@
 package com.cailangrott.cinemax.strategy;
 
+import com.cailangrott.cinemax.entity.Ticket;
 import com.cailangrott.cinemax.entity.User;
 import com.cailangrott.cinemax.entity.enums.TicketType;
 
@@ -13,9 +14,9 @@ public class CadeiraSuperiorStrategy implements TicketSaleStrategy{
     private static final long olderAge = 60;
 
     @Override
-    public BigDecimal sell(TicketType ticketType, User user) {
+    public BigDecimal sell(Ticket ticket, User user) {
         long age = ChronoUnit.YEARS.between(user.getBirthDate(), LocalDate.now());
-        BigDecimal value = ticketType.getValor();
+        BigDecimal value = ticket.getTicketType().getValue();
 
         if (user.getIsStudent()) {
             if (age >= olderAge) {
@@ -26,7 +27,7 @@ public class CadeiraSuperiorStrategy implements TicketSaleStrategy{
         if (age >= olderAge) {
             return value.subtract(value.multiply(ticketOffOlderAge));
         } else {
-            return ticketType.getValor();
+            return ticket.getTicketType().getValue();
         }
     }
 }
